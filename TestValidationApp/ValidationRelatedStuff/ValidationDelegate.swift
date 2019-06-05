@@ -9,12 +9,15 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     let validateOnEnter: Bool
     let isServerValidation: Bool
+    let masterFields: [MasterField]
 
     init(validateOnEnter: Bool = true,
-         isServerValidation: Bool = true) { // Add all validation settings here
+         isServerValidation: Bool = true,
+         masterFields: [MasterField] = []) { // Add all validation settings here
 
         self.validateOnEnter = validateOnEnter
         self.isServerValidation = isServerValidation
+        self.masterFields = masterFields
     }
 
     // MARK: - UITextFieldDelegate

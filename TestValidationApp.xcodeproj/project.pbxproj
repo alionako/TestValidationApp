@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36AEC2BE22AFD33900441184 /* MasterField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2BD22AFD33900441184 /* MasterField.swift */; };
 		36BCEF95228EF75D00D5A37E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCEF94228EF75D00D5A37E /* AppDelegate.swift */; };
 		36BCEF97228EF75D00D5A37E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCEF96228EF75D00D5A37E /* ViewController.swift */; };
 		36BCEF9A228EF75D00D5A37E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BCEF98228EF75D00D5A37E /* Main.storyboard */; };
@@ -15,9 +16,12 @@
 		36F2911C22A1A45B0029F4A5 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2911B22A1A45B0029F4A5 /* ValidationDelegate.swift */; };
 		36F2911E22A1A47E0029F4A5 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2911D22A1A47E0029F4A5 /* Validatable.swift */; };
 		36F2912022A1A4B70029F4A5 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2911F22A1A4B70029F4A5 /* MyTextField.swift */; };
+		9F4DC6F0151EB4413BF8C587 /* Pods_TestValidationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8E1F30515C9590335ACCCD /* Pods_TestValidationApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E4303DAB58F9357DAEAC4EE /* Pods-TestValidationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestValidationApp.release.xcconfig"; path = "Target Support Files/Pods-TestValidationApp/Pods-TestValidationApp.release.xcconfig"; sourceTree = "<group>"; };
+		36AEC2BD22AFD33900441184 /* MasterField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterField.swift; sourceTree = "<group>"; };
 		36BCEF91228EF75D00D5A37E /* TestValidationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestValidationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BCEF94228EF75D00D5A37E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BCEF96228EF75D00D5A37E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		36F2911B22A1A45B0029F4A5 /* ValidationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationDelegate.swift; sourceTree = "<group>"; };
 		36F2911D22A1A47E0029F4A5 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		36F2911F22A1A4B70029F4A5 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		3F8E1F30515C9590335ACCCD /* Pods_TestValidationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestValidationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E4EBDBB08A722A33DFE8CEC /* Pods-TestValidationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestValidationApp.debug.xcconfig"; path = "Target Support Files/Pods-TestValidationApp/Pods-TestValidationApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4DC6F0151EB4413BF8C587 /* Pods_TestValidationApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +53,8 @@
 			children = (
 				36BCEF93228EF75D00D5A37E /* TestValidationApp */,
 				36BCEF92228EF75D00D5A37E /* Products */,
+				AC5BA1C102BEE1D5F6F8FBBB /* Pods */,
+				38345443C9E20E0C52A274A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +83,7 @@
 				36F2911F22A1A4B70029F4A5 /* MyTextField.swift */,
 				36F2911D22A1A47E0029F4A5 /* Validatable.swift */,
 				36F2911B22A1A45B0029F4A5 /* ValidationDelegate.swift */,
+				36AEC2BD22AFD33900441184 /* MasterField.swift */,
 			);
 			path = ValidationRelatedStuff;
 			sourceTree = "<group>";
@@ -89,6 +99,23 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		38345443C9E20E0C52A274A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F8E1F30515C9590335ACCCD /* Pods_TestValidationApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC5BA1C102BEE1D5F6F8FBBB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E4EBDBB08A722A33DFE8CEC /* Pods-TestValidationApp.debug.xcconfig */,
+				1E4303DAB58F9357DAEAC4EE /* Pods-TestValidationApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36BCEFA3228EF75E00D5A37E /* Build configuration list for PBXNativeTarget "TestValidationApp" */;
 			buildPhases = (
+				8602CB0DCD257449E46DE8D6 /* [CP] Check Pods Manifest.lock */,
 				36BCEF8D228EF75D00D5A37E /* Sources */,
 				36BCEF8E228EF75D00D5A37E /* Frameworks */,
 				36BCEF8F228EF75D00D5A37E /* Resources */,
+				51FD60561C6BBB5942F36558 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +184,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		51FD60561C6BBB5942F36558 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestValidationApp/Pods-TestValidationApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestValidationApp/Pods-TestValidationApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8602CB0DCD257449E46DE8D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestValidationApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		36BCEF8D228EF75D00D5A37E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -164,6 +240,7 @@
 				36F2912022A1A4B70029F4A5 /* MyTextField.swift in Sources */,
 				36F2911E22A1A47E0029F4A5 /* Validatable.swift in Sources */,
 				36BCEF95228EF75D00D5A37E /* AppDelegate.swift in Sources */,
+				36AEC2BE22AFD33900441184 /* MasterField.swift in Sources */,
 				36F2911C22A1A45B0029F4A5 /* ValidationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +385,7 @@
 		};
 		36BCEFA4228EF75E00D5A37E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E4EBDBB08A722A33DFE8CEC /* Pods-TestValidationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -326,6 +404,7 @@
 		};
 		36BCEFA5228EF75E00D5A37E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E4303DAB58F9357DAEAC4EE /* Pods-TestValidationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
