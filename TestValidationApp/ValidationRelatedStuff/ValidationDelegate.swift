@@ -9,7 +9,7 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     let validateOnEnter: Bool
     let isServerValidation: Bool
-    let masterFields: [MasterField]
+    let masterFields: [MasterField] // Fields will define content validation for current field
 
     init(validateOnEnter: Bool = true,
          isServerValidation: Bool = true,
