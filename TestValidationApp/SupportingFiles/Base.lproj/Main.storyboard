@@ -56,6 +56,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="first" destination="DOP-4l-7AF" id="IZD-DP-tbe"/>
+                        <outlet property="fourth" destination="ach-QZ-CjH" id="Roj-ct-JIB"/>
+                        <outlet property="second" destination="Io5-vW-ALa" id="6jw-wb-X2v"/>
+                        <outlet property="third" destination="EdH-cj-SPh" id="WXr-46-32c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

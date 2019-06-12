@@ -10,18 +10,18 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     let validateOnEnter: Bool
     let isSynchronousValidation: Bool
-    let rules: [Rule]
-    let masterFields: [MasterField] // Fields will define content validation for current field
+    private (set) var rules: [Rule]
+    private (set) var textFieldRules: [TextFieldsRule] // Fields will define content validation for current field
 
     init(validateOnEnter: Bool = true,
          isSynchronousValidation: Bool = true,
          rules: [Rule] = [],
-         masterFields: [MasterField] = []) { // Add all validation settings here
+         textFieldRules: [TextFieldsRule] = []) { // Add all validation settings here
 
         self.validateOnEnter = validateOnEnter
         self.isSynchronousValidation = isSynchronousValidation
         self.rules = rules
-        self.masterFields = masterFields
+        self.textFieldRules = textFieldRules
     }
 
     // MARK: - UITextFieldDelegate
@@ -44,11 +44,24 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
     }
 }
 
+// MARK: - Public
+extension ValidationDelegate {
+
+    func set(rules: [Rule]) {
+        self.rules = rules
+    }
+
+    func set(textFieldRules: [TextFieldsRule]) {
+        self.textFieldRules = textFieldRules
+    }
+}
+
+// MARK: - Private
 private extension ValidationDelegate {
 
     func validate(string: String) -> Bool {
         let passesAllRules = rules.reduce(true, { $0 && $1.validate(string) })
-        let passesAllTextFieldRules = masterFields.reduce(true, { $0 && $1.rule.validate(string) })
+        let passesAllTextFieldRules = textFieldRules.reduce(true, { $0 && $1.validate(string) })
         return passesAllRules && passesAllTextFieldRules
     }
 }
