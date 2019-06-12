@@ -14,6 +14,8 @@
 		36AEC2CC22AFE71400441184 /* LessThanOtherTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2CB22AFE71400441184 /* LessThanOtherTextField.swift */; };
 		36AEC2CE22AFE72D00441184 /* LessThanOrEqualToOtherTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2CD22AFE72D00441184 /* LessThanOrEqualToOtherTextField.swift */; };
 		36AEC2D322B1131000441184 /* ValidationNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2D222B1131000441184 /* ValidationNumberFormatter.swift */; };
+		36AEC2D622B138D300441184 /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2D522B138D300441184 /* ValidationState.swift */; };
+		36AEC2D822B13FEC00441184 /* ValidationTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2D722B13FEC00441184 /* ValidationTrigger.swift */; };
 		36BCEF95228EF75D00D5A37E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCEF94228EF75D00D5A37E /* AppDelegate.swift */; };
 		36BCEF97228EF75D00D5A37E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCEF96228EF75D00D5A37E /* ViewController.swift */; };
 		36BCEF9A228EF75D00D5A37E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BCEF98228EF75D00D5A37E /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		36AEC2CB22AFE71400441184 /* LessThanOtherTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessThanOtherTextField.swift; sourceTree = "<group>"; };
 		36AEC2CD22AFE72D00441184 /* LessThanOrEqualToOtherTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessThanOrEqualToOtherTextField.swift; sourceTree = "<group>"; };
 		36AEC2D222B1131000441184 /* ValidationNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationNumberFormatter.swift; sourceTree = "<group>"; };
+		36AEC2D522B138D300441184 /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
+		36AEC2D722B13FEC00441184 /* ValidationTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTrigger.swift; sourceTree = "<group>"; };
 		36BCEF91228EF75D00D5A37E /* TestValidationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestValidationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BCEF94228EF75D00D5A37E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BCEF96228EF75D00D5A37E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				36F2911F22A1A4B70029F4A5 /* MyTextField.swift */,
 				36F2911D22A1A47E0029F4A5 /* Validatable.swift */,
 				36F2911B22A1A45B0029F4A5 /* ValidationDelegate.swift */,
+				36AEC2D522B138D300441184 /* ValidationState.swift */,
+				36AEC2D722B13FEC00441184 /* ValidationTrigger.swift */,
 				36AEC2D422B1132300441184 /* Helpers */,
 				36AEC2D122AFE78800441184 /* TextFieldRules */,
 			);
@@ -303,8 +309,10 @@
 				36AEC2D322B1131000441184 /* ValidationNumberFormatter.swift in Sources */,
 				36AEC2C222AFE5D000441184 /* TextFieldsRule.swift in Sources */,
 				36AEC2CE22AFE72D00441184 /* LessThanOrEqualToOtherTextField.swift in Sources */,
+				36AEC2D822B13FEC00441184 /* ValidationTrigger.swift in Sources */,
 				36AEC2CA22AFE6E900441184 /* MoreThanOrEqualToOtherTextField.swift in Sources */,
 				36BCEF95228EF75D00D5A37E /* AppDelegate.swift in Sources */,
+				36AEC2D622B138D300441184 /* ValidationState.swift in Sources */,
 				36F2911C22A1A45B0029F4A5 /* ValidationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,24 +4,33 @@ import SwiftValidator
 // The class that will actually perform validation in the app
 // Will have default settings that
 
+typealias ValidationClosure = ((ValidationState) -> ())
+
 final class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     // Validation settings
 
-    let validateOnEnter: Bool
+    let validationTrigger: ValidationTrigger
     let isSynchronousValidation: Bool
+    private (set) var validationState: ValidationState = .unvalidated {
+        didSet { validationClosure(validationState) }
+    }
     private (set) var rules: [Rule]
-    private (set) var textFieldRules: [TextFieldsRule] // Fields will define content validation for current field
+    private (set) var textFieldRules: [TextFieldsRule]
+    private weak var field: UITextField?
+    private let validationClosure: ValidationClosure
 
-    init(validateOnEnter: Bool = true,
+    init(validationTrigger: ValidationTrigger = .editingEnd,
          isSynchronousValidation: Bool = true,
          rules: [Rule] = [],
-         textFieldRules: [TextFieldsRule] = []) { // Add all validation settings here
+         textFieldRules: [TextFieldsRule] = [],
+         validationClosure: @escaping ValidationClosure) { // Add all validation settings here
 
-        self.validateOnEnter = validateOnEnter
+        self.validationTrigger = validationTrigger
         self.isSynchronousValidation = isSynchronousValidation
         self.rules = rules
         self.textFieldRules = textFieldRules
+        self.validationClosure = validationClosure
     }
 
     // MARK: - UITextFieldDelegate
@@ -30,7 +39,7 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
 
-        if !validateOnEnter {
+        if validationTrigger != .enter {
             return true
         }
 
@@ -40,7 +49,16 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
             return false
         }
         // check if validateOnEnter and process if needed
-        return validateOnEnter && validate(string: new)
+        return validate(string: new)
+    }
+
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        validateOnEditingEnd(textField)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        validateOnEditingEnd(textField)
     }
 }
 
@@ -60,8 +78,21 @@ extension ValidationDelegate {
 private extension ValidationDelegate {
 
     func validate(string: String) -> Bool {
+        validationState = .validating
+
         let passesAllRules = rules.reduce(true, { $0 && $1.validate(string) })
         let passesAllTextFieldRules = textFieldRules.reduce(true, { $0 && $1.validate(string) })
-        return passesAllRules && passesAllTextFieldRules
+        let isValid = passesAllRules && passesAllTextFieldRules
+
+        validationState = isValid ? .valid : .invalid
+
+        return isValid
+    }
+
+    private func validateOnEditingEnd(_ textField: UITextField) {
+        guard validationTrigger == .editingEnd else {
+            return
+        }
+        _ = validate(string: textField.text ?? "")
     }
 }

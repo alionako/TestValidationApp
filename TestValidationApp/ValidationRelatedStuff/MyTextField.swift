@@ -5,7 +5,18 @@ import UIKit
 
 final class MyTextField: UITextField, Validatable {
 
-    let validationDelegate = ValidationDelegate() // delegate itself
+    lazy var validationDelegate = ValidationDelegate(validationClosure: { [weak self] state in
+        switch state {
+        case .valid:
+            self?.backgroundColor = .green
+        case .invalid:
+            self?.backgroundColor = .red
+        case .validating:
+            self?.backgroundColor = .blue
+        default:
+            return 
+        }
+    }) // delegate itself
 
     override init(frame: CGRect) {
         super.init(frame: frame)

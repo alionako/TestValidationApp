@@ -6,7 +6,6 @@ import UIKit
 protocol Validatable {
 
     var validationDelegate: ValidationDelegate { get }
-
 }
 
 extension Validatable {
