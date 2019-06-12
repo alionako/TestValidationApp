@@ -8,15 +8,15 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
     // Validation settings
 
     let validateOnEnter: Bool
-    let isServerValidation: Bool
+    let isSynchronousValidation: Bool
     let masterFields: [MasterField] // Fields will define content validation for current field
 
     init(validateOnEnter: Bool = true,
-         isServerValidation: Bool = true,
+         isSynchronousValidation: Bool = true,
          masterFields: [MasterField] = []) { // Add all validation settings here
 
         self.validateOnEnter = validateOnEnter
-        self.isServerValidation = isServerValidation
+        self.isSynchronousValidation = isSynchronousValidation
         self.masterFields = masterFields
     }
 

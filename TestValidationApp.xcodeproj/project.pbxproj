@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		36AEC2BE22AFD33900441184 /* MasterField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2BD22AFD33900441184 /* MasterField.swift */; };
-		36AEC2C022AFD93D00441184 /* MultipleTextFieldsRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2BF22AFD93D00441184 /* MultipleTextFieldsRule.swift */; };
 		36AEC2C222AFE5D000441184 /* TextFieldsRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2C122AFE5D000441184 /* TextFieldsRule.swift */; };
-		36AEC2C622AFE61400441184 /* SingleTextFieldRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2C522AFE61400441184 /* SingleTextFieldRule.swift */; };
+		36AEC2C622AFE61400441184 /* TextFieldRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2C522AFE61400441184 /* TextFieldRule.swift */; };
 		36AEC2C822AFE6C800441184 /* MoreThanOtherTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2C722AFE6C800441184 /* MoreThanOtherTextField.swift */; };
 		36AEC2CA22AFE6E900441184 /* MoreThanOrEqualToOtherTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2C922AFE6E900441184 /* MoreThanOrEqualToOtherTextField.swift */; };
 		36AEC2CC22AFE71400441184 /* LessThanOtherTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AEC2CB22AFE71400441184 /* LessThanOtherTextField.swift */; };
@@ -29,9 +28,8 @@
 /* Begin PBXFileReference section */
 		1E4303DAB58F9357DAEAC4EE /* Pods-TestValidationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestValidationApp.release.xcconfig"; path = "Target Support Files/Pods-TestValidationApp/Pods-TestValidationApp.release.xcconfig"; sourceTree = "<group>"; };
 		36AEC2BD22AFD33900441184 /* MasterField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterField.swift; sourceTree = "<group>"; };
-		36AEC2BF22AFD93D00441184 /* MultipleTextFieldsRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextFieldsRule.swift; sourceTree = "<group>"; };
 		36AEC2C122AFE5D000441184 /* TextFieldsRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsRule.swift; sourceTree = "<group>"; };
-		36AEC2C522AFE61400441184 /* SingleTextFieldRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextFieldRule.swift; sourceTree = "<group>"; };
+		36AEC2C522AFE61400441184 /* TextFieldRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRule.swift; sourceTree = "<group>"; };
 		36AEC2C722AFE6C800441184 /* MoreThanOtherTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreThanOtherTextField.swift; sourceTree = "<group>"; };
 		36AEC2C922AFE6E900441184 /* MoreThanOrEqualToOtherTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreThanOrEqualToOtherTextField.swift; sourceTree = "<group>"; };
 		36AEC2CB22AFE71400441184 /* LessThanOtherTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessThanOtherTextField.swift; sourceTree = "<group>"; };
@@ -92,8 +90,7 @@
 		36AEC2D022AFE76D00441184 /* BaseTextfieldRules */ = {
 			isa = PBXGroup;
 			children = (
-				36AEC2BF22AFD93D00441184 /* MultipleTextFieldsRule.swift */,
-				36AEC2C522AFE61400441184 /* SingleTextFieldRule.swift */,
+				36AEC2C522AFE61400441184 /* TextFieldRule.swift */,
 			);
 			path = BaseTextfieldRules;
 			sourceTree = "<group>";
@@ -297,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36AEC2C622AFE61400441184 /* SingleTextFieldRule.swift in Sources */,
+				36AEC2C622AFE61400441184 /* TextFieldRule.swift in Sources */,
 				36BCEF97228EF75D00D5A37E /* ViewController.swift in Sources */,
 				36AEC2C822AFE6C800441184 /* MoreThanOtherTextField.swift in Sources */,
 				36F2912022A1A4B70029F4A5 /* MyTextField.swift in Sources */,
@@ -308,7 +305,6 @@
 				36AEC2CA22AFE6E900441184 /* MoreThanOrEqualToOtherTextField.swift in Sources */,
 				36BCEF95228EF75D00D5A37E /* AppDelegate.swift in Sources */,
 				36AEC2BE22AFD33900441184 /* MasterField.swift in Sources */,
-				36AEC2C022AFD93D00441184 /* MultipleTextFieldsRule.swift in Sources */,
 				36F2911C22A1A45B0029F4A5 /* ValidationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
