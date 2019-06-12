@@ -94,7 +94,7 @@ private extension ValidationDelegate {
 
         if string.isEmpty {
             validationState = .empty
-            return true
+            return rules.filter { $0 as? RequiredRule != nil }.isEmpty
         }
 
         let passesAllRules = rules.reduce(true, { $0 && $1.validate(string) })
