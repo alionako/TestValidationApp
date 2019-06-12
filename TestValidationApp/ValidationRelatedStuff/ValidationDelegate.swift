@@ -85,12 +85,17 @@ extension ValidationDelegate {
         self.textFieldRules = textFieldRules
     }
 }
-
+  
 // MARK: - Private
 private extension ValidationDelegate {
 
     func validate(string: String) -> Bool {
         validationState = .validating
+
+        if string.isEmpty {
+            validationState = .empty
+            return true
+        }
 
         let passesAllRules = rules.reduce(true, { $0 && $1.validate(string) })
         let passesAllTextFieldRules = textFieldRules.reduce(true, { $0 && $1.validate(string) })

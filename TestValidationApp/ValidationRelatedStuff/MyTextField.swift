@@ -13,8 +13,10 @@ final class MyTextField: UITextField, Validatable {
             self?.backgroundColor = .red
         case .validating:
             self?.backgroundColor = .blue
+        case .empty:
+            self?.backgroundColor = .white
         default:
-            return 
+            return
         }
     }) // delegate itself
 
