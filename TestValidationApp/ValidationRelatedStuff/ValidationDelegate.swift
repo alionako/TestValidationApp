@@ -12,13 +12,18 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     let validationTrigger: ValidationTrigger
     let isSynchronousValidation: Bool
+    private (set) var rules: [Rule]
+    private weak var field: UITextField?
+    private let validationClosure: ValidationClosure
+    private var currentText: String?
+
+    private (set) var textFieldRules: [TextFieldsRule] {
+        didSet { updateSubscriptions() }
+    }
+
     private (set) var validationState: ValidationState = .unvalidated {
         didSet { validationClosure(validationState) }
     }
-    private (set) var rules: [Rule]
-    private (set) var textFieldRules: [TextFieldsRule]
-    private weak var field: UITextField?
-    private let validationClosure: ValidationClosure
 
     init(validationTrigger: ValidationTrigger = .editingEnd,
          isSynchronousValidation: Bool = true,
@@ -60,6 +65,13 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validateOnEditingEnd(textField)
     }
+
+    @objc private func didChangeText() {
+        guard let text = currentText, !text.isEmpty else {
+            return
+        }
+        _ = validate(string: text)
+    }
 }
 
 // MARK: - Public
@@ -94,5 +106,18 @@ private extension ValidationDelegate {
             return
         }
         _ = validate(string: textField.text ?? "")
+        currentText = textField.text ?? ""
+    }
+
+    func updateSubscriptions() {
+        NotificationCenter.default.removeObserver(self)
+        textFieldRules.forEach {
+            $0.textFields.forEach { field in
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(didChangeText),
+                                                       name: UITextField.textDidChangeNotification,
+                                                       object: nil)
+            }
+        }
     }
 }
