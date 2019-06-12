@@ -7,10 +7,6 @@ class TextFieldRule: TextFieldsRule {
     let message: String
     let textFields: [UITextField]
 
-    var firstTextField: UITextField? {
-        return textFields.first
-    }
-
     init(with textFields: [UITextField], message: String = "") {
         self.textFields = textFields
         self.message = message
