@@ -7,13 +7,13 @@ class TextFieldRule: TextFieldsRule {
     let message: String
     let textFields: [UITextField]
 
-    init(with textFields: [UITextField], message: String = "") {
+    init(with textFields: [UITextField], message: String = .emptyString) {
         self.textFields = textFields
         self.message = message
     }
 
     // Convenience init for single textField dependency
-    convenience init(with textField: UITextField, message: String = "") {
+    convenience init(with textField: UITextField, message: String = .emptyString) {
         self.init(with: [textField], message: message)
     }
 

@@ -70,11 +70,11 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
         guard let text = currentText, !text.isEmpty else {
             return
         }
-        _ = validate(string: text)
+        validate(text: text)
     }
 }
 
-// MARK: - Public
+// MARK: - Public: rule setting
 extension ValidationDelegate {
 
     func set(rules: [Rule]) {
@@ -83,6 +83,18 @@ extension ValidationDelegate {
 
     func set(textFieldRules: [TextFieldsRule]) {
         self.textFieldRules = textFieldRules
+    }
+}
+
+// MARK: - Public: validation
+extension ValidationDelegate {
+
+    func validate(text: String?) {
+        _ = validate(string: text ?? .emptyString)
+    }
+
+    func validateAsync(text: String) {
+//        _ = validate(string: text)
     }
 }
   
@@ -110,8 +122,8 @@ private extension ValidationDelegate {
         guard validationTrigger == .editingEnd else {
             return
         }
-        _ = validate(string: textField.text ?? "")
-        currentText = textField.text ?? ""
+        currentText = textField.text ?? .emptyString
+        validate(text: currentText)
     }
 
     func updateSubscriptions() {
