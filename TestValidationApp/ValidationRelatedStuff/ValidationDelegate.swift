@@ -4,17 +4,18 @@ import SwiftValidator
 // The class that will actually perform validation in the app
 // Will have default settings that
 
-typealias ValidationClosure = ((ValidationState) -> ())
+typealias ValidationClosure = ((String?) -> Result<Bool, Error>)
+typealias ValidationStateHandler = ((ValidationState) -> ())
 
 final class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     // Validation settings
 
     let validationTrigger: ValidationTrigger
-    let isSynchronousValidation: Bool
-    private (set) var rules: [Rule]
     private weak var field: UITextField?
-    private let validationClosure: ValidationClosure
+    private (set) var rules: [Rule]
+    private (set) var validationStateHandler: ValidationStateHandler
+    private (set) var validationClosure: ValidationClosure?
     private var currentText: String?
 
     private (set) var textFieldRules: [TextFieldsRule] {
@@ -22,20 +23,20 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
     }
 
     private (set) var validationState: ValidationState = .unvalidated {
-        didSet { validationClosure(validationState) }
+        didSet { validationStateHandler(validationState) }
     }
 
     init(validationTrigger: ValidationTrigger = .editingEnd,
-         isSynchronousValidation: Bool = true,
+         validationClosure: ValidationClosure? = nil,
          rules: [Rule] = [],
          textFieldRules: [TextFieldsRule] = [],
-         validationClosure: @escaping ValidationClosure) { // Add all validation settings here
+         validationStateHandler: @escaping ValidationStateHandler) { // Add all validation settings here
 
         self.validationTrigger = validationTrigger
-        self.isSynchronousValidation = isSynchronousValidation
+        self.validationClosure = validationClosure
         self.rules = rules
         self.textFieldRules = textFieldRules
-        self.validationClosure = validationClosure
+        self.validationStateHandler = validationStateHandler
     }
 
     // MARK: - UITextFieldDelegate
@@ -93,8 +94,30 @@ extension ValidationDelegate {
         _ = validate(string: text ?? .emptyString)
     }
 
-    func validateAsync(text: String) {
-//        _ = validate(string: text)
+    func validateAsync(text: String?) {
+        validationState = .validating
+        guard let result = validationClosure?(text) else {
+            return
+        }
+
+        switch result {
+        case .success(let isValid):
+            validationState = isValid ? .valid : .invalid
+        case .failure:
+            validationState = .failedToValidate
+        }
+    }
+
+    func validateAll(text: String?) {
+        let string = text ?? .emptyString
+        let passedLocalValidation = validate(string: string)
+        let passedAsyncValidation = validateAsync(string: string)
+
+        guard let passedAsync = passedAsyncValidation else {
+            return
+        }
+        let isValid = passedLocalValidation && passedAsync
+        validationState = isValid ? .valid : .invalid
     }
 }
   
@@ -116,6 +139,23 @@ private extension ValidationDelegate {
         validationState = isValid ? .valid : .invalid
 
         return isValid
+    }
+
+    private func validateAsync(string: String) -> Bool? {
+        validationState = .validating
+
+        guard let result = validationClosure?(string) else {
+            return true
+        }
+
+        switch result {
+        case .success(let isValid):
+            validationState = isValid ? .valid : .invalid
+            return isValid
+        case .failure:
+            validationState = .failedToValidate
+            return nil
+        }
     }
 
     private func validateOnEditingEnd(_ textField: UITextField) {

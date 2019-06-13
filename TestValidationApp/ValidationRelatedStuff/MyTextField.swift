@@ -5,7 +5,7 @@ import UIKit
 
 final class MyTextField: UITextField, Validatable {
 
-    lazy var validationDelegate = ValidationDelegate(validationClosure: { [weak self] state in
+    lazy var validationDelegate = ValidationDelegate(validationStateHandler: { [weak self] state in
         switch state {
         case .valid:
             self?.backgroundColor = .green

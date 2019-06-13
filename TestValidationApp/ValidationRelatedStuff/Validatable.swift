@@ -34,6 +34,6 @@ extension Validatable {
     }
 
     func validateAsync(text: String?) {
-        validationDelegate.validate(text: text ?? .emptyString)
+        validationDelegate.validateAsync(text: text ?? .emptyString)
     }
 }
