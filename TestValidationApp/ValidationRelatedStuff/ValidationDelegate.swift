@@ -7,16 +7,16 @@ import SwiftValidator
 typealias ValidationClosure = ((String?) -> Result<Bool, Error>)
 typealias ValidationStateHandler = ((ValidationState) -> ())
 
-final class ValidationDelegate: NSObject, UITextFieldDelegate {
+class ValidationDelegate: NSObject, UITextFieldDelegate {
 
     // Validation settings
 
-    let validationTrigger: ValidationTrigger
-    private weak var field: UITextField?
     private (set) var rules: [Rule]
     private (set) var validationStateHandler: ValidationStateHandler
     private (set) var validationClosure: ValidationClosure?
+    private (set) var validationTrigger: ValidationTrigger
     private var currentText: String?
+    private weak var field: UITextField?
 
     private (set) var textFieldRules: [TextFieldsRule] {
         didSet { updateSubscriptions() }
@@ -73,10 +73,8 @@ final class ValidationDelegate: NSObject, UITextFieldDelegate {
         }
         validate(text: text)
     }
-}
 
-// MARK: - Public: rule setting
-extension ValidationDelegate {
+    // MARK: - Public: ValidationDelegate configuration
 
     func set(rules: [Rule]) {
         self.rules = rules
@@ -85,10 +83,16 @@ extension ValidationDelegate {
     func set(textFieldRules: [TextFieldsRule]) {
         self.textFieldRules = textFieldRules
     }
-}
 
-// MARK: - Public: validation
-extension ValidationDelegate {
+    func set(validationTrigger: ValidationTrigger) {
+        self.validationTrigger = validationTrigger
+    }
+
+    func set(validationClosure: @escaping ValidationClosure) {
+        self.validationClosure = validationClosure
+    }
+
+    // MARK: - Public: validation
 
     func validate(text: String?) {
         _ = validate(string: text ?? .emptyString)
@@ -120,7 +124,7 @@ extension ValidationDelegate {
         validationState = isValid ? .valid : .invalid
     }
 }
-  
+
 // MARK: - Private
 private extension ValidationDelegate {
 
