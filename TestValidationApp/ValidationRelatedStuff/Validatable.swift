@@ -19,10 +19,6 @@ extension Validatable {
     func set(rules: [Rule]) {
         validationDelegate.set(rules: rules)
     }
-
-    func set(textFieldRules: [TextFieldsRule]) {
-        validationDelegate.set(textFieldRules: textFieldRules)
-    }
 }
 
 // MARK: - Validation itself
@@ -32,8 +28,9 @@ extension Validatable {
     func validate(text: String?) {
         validationDelegate.validate(text: text ?? .emptyString)
     }
+}
 
-    func validateAsync(text: String?) {
-        validationDelegate.validateAsync(text: text ?? .emptyString)
-    }
+
+final class ValidationManager {
+
 }

@@ -55,7 +55,7 @@ class ValidationDelegate: NSObject, UITextFieldDelegate {
             return false
         }
         // check if validateOnEnter and process if needed
-        return validate(string: new)
+        return validate(string: new) ?? false
     }
 
 
@@ -97,59 +97,18 @@ class ValidationDelegate: NSObject, UITextFieldDelegate {
     func validate(text: String?) {
         _ = validate(string: text ?? .emptyString)
     }
-
-    func validateAsync(text: String?) {
-        validationState = .validating
-        guard let result = validationClosure?(text) else {
-            return
-        }
-
-        switch result {
-        case .success(let isValid):
-            validationState = isValid ? .valid : .invalid
-        case .failure:
-            validationState = .failedToValidate
-        }
-    }
-
-    func validateAll(text: String?) {
-        let string = text ?? .emptyString
-        let passedLocalValidation = validate(string: string)
-        let passedAsyncValidation = validateAsync(string: string)
-
-        guard let passedAsync = passedAsyncValidation else {
-            return
-        }
-        let isValid = passedLocalValidation && passedAsync
-        validationState = isValid ? .valid : .invalid
-    }
 }
 
 // MARK: - Private
 private extension ValidationDelegate {
 
-    func validate(string: String) -> Bool {
+    func validate(string: String) -> Bool? {
         validationState = .validating
 
-        if string.isEmpty {
-            validationState = .empty
-            return rules.filter { $0 as? RequiredRule != nil }.isEmpty
-        }
-
-        let passesAllRules = rules.reduce(true, { $0 && $1.validate(string) })
-        let passesAllTextFieldRules = textFieldRules.reduce(true, { $0 && $1.validate(string) })
-        let isValid = passesAllRules && passesAllTextFieldRules
-
-        validationState = isValid ? .valid : .invalid
-
-        return isValid
-    }
-
-    private func validateAsync(string: String) -> Bool? {
-        validationState = .validating
-
-        guard let result = validationClosure?(string) else {
-            return true
+        let rulesValidationPassed = rules.reduce(true, { $0 && $1.validate(string) })
+        guard rulesValidationPassed, let result = validationClosure?(string) else {
+            validationState = rulesValidationPassed ? .valid : .invalid
+            return rulesValidationPassed
         }
 
         switch result {
@@ -182,3 +141,17 @@ private extension ValidationDelegate {
         }
     }
 }
+
+
+
+//final class FormManager {
+//    var fields: [UITextField]
+//}
+//
+//
+//final class FieldRule {
+//
+//    var rule: Rule
+//    var parentRules: [Rule]
+//    var childRules: [Rule]
+//}
